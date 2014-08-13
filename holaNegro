@@ -5,7 +5,161 @@ HOla esta sera una nueva actualizacion que se mostrara en la Web
 
 Ahora esta sera una nueva actualizacion que se mostrara en local
 
-If ((Año Mod 4) = 0 And (Año Mod 10) <> 0) Or (Año Mod 400) = 0 Then 'If para verificar si el año es Bisiesto'
+Public Class Form1
+
+    'Declaracion de variables a utilizar'
+
+    Dim Año, Month, Dia As String
+    Dim Mes, Bisi As Integer
+
+
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
+
+        Año = ComboBox1.SelectedItem() 'Capturamos el dato del año en la variable mediante el Combobox1'
+
+        ComboBox2.SelectedIndex = False 'Al seleccionar un año, regresamos a su primer valor la seleccion del Cmb2'
+        ComboBox3.SelectedIndex = False 'Al seleccionar un año, regresamos a su primer valor la seleccion del Cmb3'
+
+        If ((Año Mod 4) = 0 And (Año Mod 10) <> 0) Or (Año Mod 400) = 0 Then 'If para verificar si el año es Bisiesto'
 
             Bisi = 1
             MsgBox("Este año es Bisiesto", MsgBoxStyle.Information, "Año Bisiesto")
+
+        Else
+
+            Bisi = 0
+
+        End If
+
+    End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox2.SelectedIndexChanged
+
+        Mes = ComboBox2.SelectedIndex() 'Capturamos el valor Index del Combobox2'
+        Month = ComboBox2.SelectedItem() 'Capturamos el texto seleccionado en el Combobox2
+
+        Dim i As Integer
+
+        i = 0
+
+        Select Case Mes
+
+            Case 0
+
+                ComboBox3.Items.Clear() 'Limpiamos los datos que tiene el Combobox3'
+                For i = 1 To 31 'Llenado de los días del mes, mediante un for'
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 1
+
+                If Bisi = 1 Then
+
+                    ComboBox3.Items.Clear()
+                    For i = 1 To 29 'For para el llenado de los días del mes de Febrero si el año es Bisiesto'
+                        ComboBox3.Items.Add(i) 'Llenamos el Combobox3 con los días'
+                    Next i
+
+                Else
+
+                    ComboBox3.Items.Clear()
+                    For i = 1 To 28 'For para el llenado de los días del mes de Febrero si el año no es Bisiesto'
+                        ComboBox3.Items.Add(i) 'Llenamos el Combobox3 con los días'
+                    Next i
+                End If
+
+            Case 2
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 3
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 30
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 4
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 5
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 30
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 6
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 7
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 8
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 30
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 9
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 10
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 30
+                    ComboBox3.Items.Add(i)
+                Next i
+
+            Case 11
+
+                ComboBox3.Items.Clear()
+                For i = 1 To 31
+                    ComboBox3.Items.Add(i)
+                Next i
+
+        End Select
+
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        For i = 1990 To 2050 'For para el llenado de los años que puede elegir el usuario'
+
+            ComboBox1.Items.Add(i) 'Agregamos los años al Combobox1'
+
+        Next i
+
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        MsgBox("La fecha ingresada fue: " & Month & " " & Dia & " del " & Año, MsgBoxStyle.Information, "Fecha Ingresada") 'Mostramos la fecha ingresada'
+    End Sub
+
+    Private Sub ComboBox3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox3.SelectedIndexChanged
+
+        Dia = ComboBox3.SelectedItem() 'Capturamos el valor del Combobox3'
+
+    End Sub
+End Class
