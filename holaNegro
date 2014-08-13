@@ -4,3 +4,8 @@
 HOla esta sera una nueva actualizacion que se mostrara en la Web
 
 Ahora esta sera una nueva actualizacion que se mostrara en local
+
+If ((Año Mod 4) = 0 And (Año Mod 10) <> 0) Or (Año Mod 400) = 0 Then 'If para verificar si el año es Bisiesto'
+
+            Bisi = 1
+            MsgBox("Este año es Bisiesto", MsgBoxStyle.Information, "Año Bisiesto")
